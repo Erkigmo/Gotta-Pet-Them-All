@@ -66,6 +66,12 @@ def before_create_items_all(item_config: dict[str, int|dict], world: World, mult
 
 # The item pool before starting items are processed, in case you want to see the raw item pool at that stage
 def before_create_items_starting(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
+    cat_count = world.options.cat_count.value
+    dog_count = world.options.dog_count.value
+
+    item_pool.append(world.create_item("Pet Cat - " + cat_count))
+    item_pool.append(world.create_item("Pet Dog - " + dog_count))
+
     return item_pool
 
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage
