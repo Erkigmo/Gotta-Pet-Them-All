@@ -1,12 +1,1 @@
-[
-  {
-    "name": "Pet Cat",
-    "category": [],
-    "requires": "|Pet Cat|"
-  },
-  {
-    "name": "Pet Dog",
-    "category": [],
-    "requires": "|Pet Dog|"
-  }
-]
+[]
