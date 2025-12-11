@@ -1,3 +1,5 @@
+from .functions import generate_item_names
+
 # called after the game.json file has been loaded
 def after_load_game_file(game_table: dict) -> dict:
     return game_table
@@ -7,19 +9,8 @@ def after_load_item_file(item_table: list) -> list:
 
     item_table = []
 
-    for a in range(world.options.cat_count.value + 1):
-        item_table.append({
-            'name': "Pet Cat - " + a,
-            'category': ["Pet Cat"],
-            'progression': True, # capitalized in Python, not in JSON
-        })
-
-    for a in range(world.options.dog_count.value + 1):
-        item_table.append({
-            'name': "Pet Dog - " + a,
-            'category': ["Pet Dog"],
-            'progression': True, # capitalized in Python, not in JSON
-        })
+    item_table.extend(generate_item_names("Cat", 20))
+    item_table.extend(generate_item_names("Dog", 20))
 
     return item_table
 
