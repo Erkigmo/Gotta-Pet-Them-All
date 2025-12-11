@@ -4,6 +4,23 @@ def after_load_game_file(game_table: dict) -> dict:
 # called after the items.json file has been loaded, before any item loading or processing has occurred
 # if you need access to the items after processing to add ids, etc., you should use the hooks in World.py
 def after_load_item_file(item_table: list) -> list:
+
+    item_table = []
+
+    for a in range(world.options.cat_count.value + 1):
+        item_table.append({
+            'name': "Pet Cat - " + a,
+            'category': ["Pet Cat"],
+            'progression': True, # capitalized in Python, not in JSON
+        })
+
+    for a in range(world.options.dog_count.value + 1):
+        item_table.append({
+            'name': "Pet Dog - " + a,
+            'category': ["Pet Dog"],
+            'progression': True, # capitalized in Python, not in JSON
+        })
+
     return item_table
 
 # NOTE: Progressive items are not currently supported in Manual. Once they are,

@@ -34,10 +34,6 @@ class TotalCharactersToWinWith(Range):
 
 # This is called before any manual options are defined, in case you want to define your own with a clean slate or let Manual define over them
 def before_options_defined(options: dict[str, Type[Option[Any]]]) -> dict[str, Type[Option[Any]]]:
-    options.update({
-        'cat_count': CatCount,
-        'dog_count': DogCount
-    })
     return options
 
 # This is called after any manual options are defined, in case you want to see what options are defined or want to modify the defined options
