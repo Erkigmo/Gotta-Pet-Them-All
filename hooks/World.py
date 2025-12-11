@@ -49,19 +49,24 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
     locationNamesToRemove: list[str] = [] # List of location names
 
     # Add your code here to calculate which locations to remove
-    # get amount of each item that we want to keep
+    # get amount of each location that we want to keep
     cat_count = world.options.cat_count.value
     dog_count = world.options.dog_count.value
 
-    items_to_keep = []
+    locations_to_keep = []
+    all_locations = []
 
-    # get items we want to keep
-    items_to_keep.extend(generate_item_names("Cat", cat_count))
-    items_to_keep.extend(generate_item_names("Dog", dog_count))
+    # get locations we want to keep
+    locations_to_keep.extend(generate_item_names("Cat", cat_count))
+    locations_to_keep.extend(generate_item_names("Dog", dog_count))
 
-    # set the item pool to be all of the items that have names that we want to keep
+    # get all locations we make
+    all_locations.extend(generate_item_names("Cat", 20))
+    all_locations.extend(generate_item_names("Dog", 20))
+
+    # set the remove pool to be all the locations that we do not want to keep
     locationNamesToRemove = [
-        i for i in locationNamesToRemove if i.name not in items_to_keep
+        i for i in all_locations if i not in locations_to_keep
     ]
 
     for region in multiworld.regions:
