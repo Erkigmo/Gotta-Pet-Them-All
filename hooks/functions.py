@@ -10,7 +10,7 @@ def generate_item_names(name: str, amount: int) -> list:
 
     return item_table
 
-def generate_item_names(name: str, amount: int) -> list:
+def generate_location_names(name: str, amount: int) -> list:
 	location_table = []
 
 	for a in range(amount):

@@ -66,11 +66,20 @@ def before_create_items_all(item_config: dict[str, int|dict], world: World, mult
 
 # The item pool before starting items are processed, in case you want to see the raw item pool at that stage
 def before_create_items_starting(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
+    # get amount of each item that we want to keep
     cat_count = world.options.cat_count.value
     dog_count = world.options.dog_count.value
 
-    item_pool.append(world.create_item("Pet Cat - " + cat_count))
-    item_pool.append(world.create_item("Pet Dog - " + dog_count))
+    items_to_keep = []
+
+    # get items we want to keep
+    items_to_keep.extend(generate_item_names("Cat", cat_count))
+    items_to_keep.extend(generate_item_names("Dog", dog_count))
+
+    # set the item pool to be all of the items that have names that we want to keep
+    item_pool = [
+        i for i in item_pool if i.name in items_to_keep
+    ]
 
     return item_pool
 
