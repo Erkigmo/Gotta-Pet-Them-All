@@ -1,7 +1,7 @@
 def generate_item_names(name: str, amount: int) -> list:
     item_table = []
 
-    for a in range(amount):
+    for a in range(amount + 1):
         item_table.append({
             'name': name + " - " + str(a),
             'category': ["Pet " + name],
@@ -13,7 +13,7 @@ def generate_item_names(name: str, amount: int) -> list:
 def generate_location_names(name: str, amount: int) -> list:
     location_table = []
 
-    for a in range(amount):
+    for a in range(amount + 1):
         location_table.append({
             'name': name + " - " + str(a),
             'category': ["Pet " + name],
