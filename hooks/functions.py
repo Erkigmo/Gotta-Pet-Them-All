@@ -1,4 +1,6 @@
 def generate_item_names(name: str, amount: int) -> list:
+	item_table = []
+
 	for a in range(amount):
         item_table.append({
             'name': name + " - " + a,
@@ -6,10 +8,16 @@ def generate_item_names(name: str, amount: int) -> list:
             'progression': True, # capitalized in Python, not in JSON
         })
 
+    return item_table
+
 def generate_item_names(name: str, amount: int) -> list:
+	location_table = []
+
 	for a in range(amount):
-        item_table.append({
+        location_table.append({
             'name': name + " - " + a,
             'category': ["Pet " + name],
             'requires': name + " - " + a
         })
+
+    return location_table
