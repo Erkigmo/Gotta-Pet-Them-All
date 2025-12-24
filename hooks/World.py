@@ -49,25 +49,6 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
     locationNamesToRemove: list[str] = [] # List of location names
 
     # Add your code here to calculate which locations to remove
-    # get amount of each location that we want to keep
-    cat_count = world.options.cat_count.value
-    dog_count = world.options.dog_count.value
-
-    locations_to_keep = []
-    all_locations = []
-
-    # get locations we want to keep
-    locations_to_keep.extend(generate_item_names("Cat", cat_count))
-    locations_to_keep.extend(generate_item_names("Dog", dog_count))
-
-    # get all locations we make
-    all_locations.extend(generate_item_names("Cat", 20))
-    all_locations.extend(generate_item_names("Dog", 20))
-
-    # set the remove pool to be all the locations that we do not want to keep
-    locationNamesToRemove = [
-        i for i in all_locations if i not in locations_to_keep
-    ]
 
     for region in multiworld.regions:
         if region.player == player:
@@ -84,25 +65,12 @@ def after_create_regions(world: World, multiworld: MultiWorld, player: int):
 #       will create 5 items that are the "useful trap" class
 # {"Item Name": {ItemClassification.useful: 5}} <- You can also use the classification directly
 def before_create_items_all(item_config: dict[str, int|dict], world: World, multiworld: MultiWorld, player: int) -> dict[str, int|dict]:
+    item_config["Pet Cat"] = get_option_value(multiworld, player, "cat_count")
+    item_config["Pet Dog"] = get_option_value(multiworld, player, "dog_count")
     return item_config
 
 # The item pool before starting items are processed, in case you want to see the raw item pool at that stage
 def before_create_items_starting(item_pool: list, world: World, multiworld: MultiWorld, player: int) -> list:
-    # get amount of each item that we want to keep
-    cat_count = world.options.cat_count.value
-    dog_count = world.options.dog_count.value
-
-    items_to_keep = []
-
-    # get items we want to keep
-    items_to_keep.extend(generate_item_names("Cat", cat_count))
-    items_to_keep.extend(generate_item_names("Dog", dog_count))
-
-    # set the item pool to be all of the items that have names that we want to keep
-    item_pool = [
-        i for i in item_pool if i.name in items_to_keep
-    ]
-
     return item_pool
 
 # The item pool after starting items are processed but before filler is added, in case you want to see the raw item pool at that stage

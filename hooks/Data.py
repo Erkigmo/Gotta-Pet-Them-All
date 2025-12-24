@@ -7,12 +7,6 @@ def after_load_game_file(game_table: dict) -> dict:
 # called after the items.json file has been loaded, before any item loading or processing has occurred
 # if you need access to the items after processing to add ids, etc., you should use the hooks in World.py
 def after_load_item_file(item_table: list) -> list:
-
-    item_table = []
-
-    item_table.extend(generate_item_names("Cat", 20))
-    item_table.extend(generate_item_names("Dog", 20))
-
     return item_table
 
 # NOTE: Progressive items are not currently supported in Manual. Once they are,
@@ -23,11 +17,10 @@ def after_load_progressive_item_file(progressive_item_table: list) -> list:
 # called after the locations.json file has been loaded, before any location loading or processing has occurred
 # if you need access to the locations after processing to add ids, etc., you should use the hooks in World.py
 def after_load_location_file(location_table: list) -> list:
-
     location_table = []
 
-    location_table.extend(generate_item_names("Cat", 20))
-    location_table.extend(generate_item_names("Dog", 20))
+    location_table.extend(generate_location_names("Cat", 20))
+    location_table.extend(generate_location_names("Dog", 20))
 
     return location_table
 

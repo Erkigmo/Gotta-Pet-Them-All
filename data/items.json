@@ -1,1 +1,14 @@
-[]
+[
+	{
+        "name": "Pet Cat",
+        "category": ["Cats"],
+        "progression": true,
+        "count": 20
+    },
+    {
+        "name": "Pet Dog",
+        "category": ["Dogs"],
+        "progression": true,
+        "count": 20
+    }
+]

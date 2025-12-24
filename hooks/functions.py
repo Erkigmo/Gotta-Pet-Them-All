@@ -17,7 +17,7 @@ def generate_location_names(name: str, amount: int) -> list:
         location_table.append({
             'name': name + " - " + str(a),
             'category': ["Pet " + name],
-            'requires': name + " - " + a
+            'requires': "|Pet " + name + ":" + str(a) + "|"
         })
 
     return location_table
