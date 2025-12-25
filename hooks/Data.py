@@ -1,5 +1,5 @@
 # helper functions for generation
-from .functions import generate_item_names, generate_location_names 
+from .functions import generate_location_names 
 
 # called after the game.json file has been loaded
 def after_load_game_file(game_table: dict) -> dict:

@@ -18,7 +18,7 @@ from ..Helpers import is_option_enabled, get_option_value, format_state_prog_ite
 import logging
 
 # helper functions for generation
-from .functions import generate_item_names, generate_location_names 
+from .functions import generate_location_names 
 
 ########################################################################################
 ## Order of method calls when the world generates:
@@ -82,6 +82,19 @@ def before_create_items_filler(item_pool: list, world: World, multiworld: MultiW
     #
     # Because multiple copies of an item can exist, you need to add an item name
     # to the list multiple times if you want to remove multiple copies of it.
+    starting_items = []
+
+    # if get_option_value(multiworld, player, "cat_count") > 0:
+    #     starting_items.extend("Pet Cat")
+
+    # if get_option_value(multiworld, player, "dog_count") > 0:
+    #     starting_items.extend("Pet Dog")
+
+    # for s in starting_items:
+    #     for item in item_pool.copy():
+    #         if s == item.name:
+    #             multiworld.push_precollected(item)
+    #             item_pool.remove(item)
 
     for itemName in itemNamesToRemove:
         item = next(i for i in item_pool if i.name == itemName)
